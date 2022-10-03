@@ -1,0 +1,52 @@
+plugins {
+  // https://github.com/nemerosa/versioning
+  id 'net.nemerosa.versioning' version '2.14.0'
+}
+
+ext {
+  interlokParentGradle = "https://raw.githubusercontent.com/adaptris/interlok-build-parent/main/v4/build.gradle"
+  interlokVersion = '4.5.0-RELEASE'
+  // Include the WAR file since by default it is excluded.
+  includeWar='true'
+}
+
+allprojects {
+  apply from: "${interlokParentGradle}"
+  // specify the version of the configuration.
+  version=versioning.info.full
+}
+
+
+dependencies {
+
+  // Actual dependencies for the build
+  interlokRuntime ("com.adaptris:interlok-tibco:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-solace:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-webspheremq:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-aws-kms:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-aws-sqs:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-aws-sns:$interlokVersion")
+
+  //Jackson for JSON print logs 
+  implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+  interlokRuntime  "io.micrometer:micrometer-registry-datadog:1.9.3"
+
+  // DataDog Metrics
+  interlokRuntime ("com.adaptris:interlok-profiler:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-rest-metrics-profiler:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-rest-metrics-jvm:$interlokVersion")
+  interlokRuntime ("com.adaptris:interlok-rest-provider-datadog:$interlokVersion")
+
+  // Documentation that is used by the WebUI when configuring
+  interlokJavadocs group: "com.adaptris", name: "interlok-tibco", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-solace", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-webspheremq", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-aws-kms", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-aws-sqs", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-aws-sns", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+
+  interlokJavadocs group: "com.adaptris", name: "interlok-profiler", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-rest-metrics-profiler", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-rest-metrics-jvm", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-rest-provider-datadog", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+}

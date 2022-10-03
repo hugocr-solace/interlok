@@ -1,0 +1,44 @@
+replicaCount: 1
+
+image:
+  repository: interlok
+  pullPolicy: IfNotPresent
+  tag: latest
+
+imagePullSecrets: []
+nameOverride: "interlok-app"
+fullnameOverride: "interlok-chart"
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: default
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: interlok.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+resources:
+  requests:
+    cpu: "2"
+    memory: "5120Mi"
+  limits:
+    cpu: "4"
+    memory: "8192Mi"
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+

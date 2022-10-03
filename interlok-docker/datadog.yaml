@@ -1,0 +1,40 @@
+## Default values for Datadog Agent
+## See Datadog helm documentation to learn more:
+## https://docs.datadoghq.com/agent/kubernetes/helm/
+
+## FOR AN EFFORTLESS UPGRADE PATH, DO NOT COPY THIS FILE AS YOUR OWN values.yaml.
+## ONLY SET THE VALUES YOU WANT TO OVERRIDE IN YOUR values.yaml.
+
+# targetSystem -- Target OS for this deployment (possible values: linux, windows)
+targetSystem: "linux"
+
+# registry -- Registry to use for all Agent images (default gcr.io)
+
+## Currently we offer Datadog Agent images on:
+## GCR - use gcr.io/datadoghq (default)
+## DockerHub - use docker.io/datadog
+## AWS - use public.ecr.aws/datadog
+registry: gcr.io/datadoghq
+
+datadog:
+  # datadog.apiKey -- Your Datadog API key
+
+  ## ref: https://app.datadoghq.com/account/settings#agent/kubernetes
+  apiKey: ad5752344724077c94e802a6ab3c8e98
+
+  clusterName: interlok-local
+
+  ## envFrom to pass configmaps or secrets as environment
+  envFrom: []
+  #   - configMapRef:
+  #       name: <CONFIGMAP_NAME>
+  #   - secretRef:
+  #       name: <SECRET_NAME>
+
+  # datadog.env -- Set environment variables for all Agents
+
+  ## The Datadog Agent supports many environment variables.
+  ## ref: https://docs.datadoghq.com/agent/docker/?tab=standard#environment-variables
+  tags:
+    - "env:local"
+    - "service_id:interlok"
