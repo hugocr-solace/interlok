@@ -43,6 +43,22 @@ spec:
             - name: http3
               containerPort: 5555
               protocol: TCP
+          livenessProbe:
+            successThreshold: 1
+            failureThreshold: 1
+            httpGet:
+              path: /workflow-health-check
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+            successThreshold: 1
+            failureThreshold: 1
+            httpGet:
+              path: /workflow-health-check
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
