@@ -45,7 +45,7 @@ spec:
               protocol: TCP
           livenessProbe:
             successThreshold: 1
-            failureThreshold: 1
+            failureThreshold: 2
             httpGet:
               path: /workflow-health-check
               port: 8080
