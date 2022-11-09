@@ -69,8 +69,44 @@
                   <queue>Q.DEV.QUEUE.1</queue>
               </consumer>
               <service-collection class="service-list">
-                  <unique-id>lonely-bell</unique-id>
-                  <services/>
+                <unique-id>lonely-bell</unique-id>
+                <services>
+                  <exception-handling-service-wrapper>
+                    <unique-id>exceptionWrapper-1</unique-id>
+                    <service class="service-list">
+                      <unique-id>exceptionTested</unique-id>
+                      <services>
+                        <log-message-service>
+                          <unique-id>testing-gunzip-1</unique-id>
+                          <log-level>DEBUG</log-level>
+                          <log-prefix>1) Testing GUnzip</log-prefix>
+                        </log-message-service>
+                        <gunzip-service>
+                          <unique-id>gunzip-service-1</unique-id>
+                        </gunzip-service>
+                        <log-message-service>
+                          <unique-id>gunzip-passed-1</unique-id>
+                          <log-level>DEBUG</log-level>
+                          <log-prefix>2) GUnzip succeeded</log-prefix>
+                        </log-message-service>
+                      </services>
+                    </service>
+                    <exception-handling-service class="service-list">
+                      <unique-id>exceptionThrown-1</unique-id>
+                      <services>
+                        <log-message-service>
+                          <unique-id>gunzip-failed-1</unique-id>
+                          <log-level>DEBUG</log-level>
+                          <log-prefix>3) GUnzip failed</log-prefix>
+                        </log-message-service>
+                      </services>
+                    </exception-handling-service>
+                    <exception-message-metadata-key>adp.exception.wrapper.message</exception-message-metadata-key>
+                  </exception-handling-service-wrapper>
+                  <gzip-service>
+                    <unique-id>cocky-engelbart</unique-id>
+                  </gzip-service>
+                </services>
               </service-collection>
               <!-- Sol2MQ: MQ publisher -->
               <producer class="jms-queue-producer">
@@ -124,8 +160,44 @@
                   <queue>DEV.QUEUE.2</queue>
               </consumer>
               <service-collection class="service-list">
-                  <unique-id>lonely-bell-2</unique-id>
-                  <services/>
+                <unique-id>lonely-bell-2</unique-id>
+                <services>
+                  <exception-handling-service-wrapper>
+                    <unique-id>exceptionWrapper-2</unique-id>
+                    <service class="service-list">
+                      <unique-id>exceptionTested</unique-id>
+                      <services>
+                        <log-message-service>
+                          <unique-id>testing-gunzip-2</unique-id>
+                          <log-level>DEBUG</log-level>
+                          <log-prefix>1) Testing GUnzip</log-prefix>
+                        </log-message-service>
+                        <gunzip-service>
+                          <unique-id>gunzip-service-2</unique-id>
+                        </gunzip-service>
+                        <log-message-service>
+                          <unique-id>gunzip-passed-2</unique-id>
+                          <log-level>DEBUG</log-level>
+                          <log-prefix>2) GUnzip succeeded</log-prefix>
+                        </log-message-service>
+                      </services>
+                    </service>
+                    <exception-handling-service class="service-list">
+                      <unique-id>exceptionThrown-2</unique-id>
+                      <services>
+                        <log-message-service>
+                          <unique-id>gunzip-failed-2</unique-id>
+                          <log-level>DEBUG</log-level>
+                          <log-prefix>3) GUnzip failed</log-prefix>
+                        </log-message-service>
+                      </services>
+                    </exception-handling-service>
+                    <exception-message-metadata-key>adp.exception.wrapper.message</exception-message-metadata-key>
+                  </exception-handling-service-wrapper>
+                  <gzip-service>
+                    <unique-id>silly-wing</unique-id>
+                  </gzip-service>
+                </services>
               </service-collection>
               <!-- MQ2Sol: Solace producer -->
               <producer class="jms-queue-producer">
