@@ -15,7 +15,7 @@ RUN cd /root/builder && \
     rm -rf /root/.gradle && \
     rm -rf /root/builder
 
-COPY interlok-rest-health-check-4.6-SNAPSHOT.jar /opt/interlok/lib
+COPY interlok-rest-health-check-datadog-4.6.jar /opt/interlok/lib
 COPY dd-java-agent.jar /opt/interlok/lib
 COPY datadog.yaml /etc/datadog-agent/
 
