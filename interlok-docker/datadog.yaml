@@ -20,7 +20,8 @@ datadog:
   # datadog.apiKey -- Your Datadog API key
 
   ## ref: https://app.datadoghq.com/account/settings#agent/kubernetes
-  apiKey: ad5752344724077c94e802a6ab3c8e98
+  apiKey: <key>
+ 
 
   clusterName: interlok-local
 
