@@ -16,8 +16,6 @@ RUN cd /root/builder && \
     rm -rf /root/builder
 
 COPY interlok-rest-health-check-datadog-4.6.jar /opt/interlok/lib
-COPY dd-java-agent.jar /opt/interlok/lib
-COPY datadog.yaml /etc/datadog-agent/
 
 ENV JAVA_TOOL_OPTIONS=""
 ENV JAVA_OPTS="-Dsun.net.inetaddr.ttl=30"
