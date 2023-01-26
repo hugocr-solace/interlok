@@ -19,8 +19,8 @@ dependencies {
   interlokRuntime ("com.adaptris:interlok-solace:$interlokVersion")
   interlokRuntime ("com.adaptris:interlok-webspheremq:$interlokVersion")
   //Jackson for JSON print logs 
-  implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
-  interlokRuntime  "io.micrometer:micrometer-registry-datadog:1.9.3"
+  interlokRuntime 'com.fasterxml.jackson.core:jackson-databind:2.13.3',
+                  'io.micrometer:micrometer-registry-datadog:1.9.3'
   // DataDog Metrics
   interlokRuntime ("com.adaptris:interlok-profiler:$interlokVersion")
   interlokRuntime ("com.adaptris:interlok-rest-metrics-profiler:$interlokVersion")
