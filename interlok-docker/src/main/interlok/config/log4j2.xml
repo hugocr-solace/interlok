@@ -5,7 +5,7 @@
     <!-- UNCOMMENT THIS BLOCK AND COMMENT THE ONE BELOW TO STOP PRINTING LOGS AS JSON -->
     <!-- <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout>
-        <Pattern>%-5p [%t] [%c{1.}.%M()] %m%n</Pattern>
+        <Pattern>%-5p [%t] [%c{1.}.%M()] %m%n</Pattern>
       </PatternLayout>
     </Console> -->
 

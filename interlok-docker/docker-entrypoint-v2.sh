@@ -13,8 +13,7 @@ if [ "$(id -u)" = '0' ]; then
   echo "Switching to interlok user"
   chown -R interlok /opt/interlok
   chown --dereference interlok "/proc/$$/fd/1" "/proc/$$/fd/2" || :
-  # exec gosu interlok java $JVM_ARGS $JAVA_OPTS -javaagent:lib/aspectjweaver.jar $ASPECT_OPTIONS -jar lib/interlok-boot.jar $INTERLOK_OPTS
-  exec gosu interlok java $JVM_ARGS $JAVA_OPTS -javaagent:lib/dd-java-agent.jar -javaagent:lib/aspectjweaver.jar $ASPECT_OPTIONS -jar lib/interlok-boot.jar $INTERLOK_OPTS -Ddd.version=1.0
+  exec gosu interlok java $JVM_ARGS $JAVA_OPTS  -javaagent:lib/aspectjweaver.jar $ASPECT_OPTIONS -jar lib/interlok-boot.jar $INTERLOK_OPTS -Ddd.version=1.0
 else
   exec java $JVM_ARGS $JAVA_OPTS -javaagent:lib/aspectjweaver.jar $ASPECT_OPTIONS -jar lib/interlok-boot.jar $INTERLOK_OPTS
 fi
